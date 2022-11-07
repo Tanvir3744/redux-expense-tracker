@@ -49,7 +49,7 @@ const transactionSlice = createSlice({
             })
             .addCase(fetchTransactions.rejected, (state, action) => {
                 state.isLoading = false;
-                state.error = action.error?.message;
+                state.error = action.error.message;
                 state.isError = true;
                 state.transactions = [];
             })
@@ -65,39 +65,9 @@ const transactionSlice = createSlice({
             })
             .addCase(createTransaction.rejected, (state, action) => {
                 state.isLoading = false;
-                state.error = action.error?.message;
+                state.error = action.error.message;
                 state.isError = true;
-            })
-            .addCase(updatingTransaction.pending, (state, action) => {
-                state.isLoading = false;
-                state.isError = false;
-            })
-            .addCase(updatingTransaction.fulfilled, (state, action) => {
-                state.isLoading = false;
-                state.isError = false;
-                state.error = '';
-                const indexToUpdate = state.transactions.findIndex(transaction => transaction.id === action.payload.id)
-                state.transactions[indexToUpdate] = action.payload;
-            })
-            .addCase(updatingTransaction.rejected, (state, action) => {
-                state.isLoading = false;
-                state.error = action.error?.message;
-                state.isError = true;
-            })
-            .addCase(deleteTransaction.pending, (state, action) => {
-                state.isLoading = false;
-                state.isError = false;
-            })
-            .addCase(deleteTransaction.fulfilled, (state, action) => {
-                state.isLoading = false;
-                state.isError = false;
-                state.error = '';
-                state.transactions = state.transactions.filter(transaction => transaction.id !== action.payload.id)
-            })
-            .addCase(deleteTransaction.rejected, (state, action) => {
-                state.isLoading = false;
-                state.error = action.error?.message;
-                state.isError = true;
+                state.transactions = [];
             })
     }
 })
