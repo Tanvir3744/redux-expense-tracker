@@ -5,10 +5,10 @@ const AloneTransaction = (props) => {
     const {name, type, amount} = props.transaction;
     console.log(props.transaction)
     return (
-        <li className={`transaction ${type}`}>
-            <p>{name}</p>
+        <li className="transaction income">
+            <p>Earned this month</p>
             <div className="right">
-                <p>{amount}</p>
+                <p>৳ 100</p>
                 <button className="link">
                     <img
                         alt='editImage'

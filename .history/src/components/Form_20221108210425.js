@@ -8,7 +8,7 @@ export default function Form() {
     const [expense, setExpense] = useState('')
 
     const dispatch = useDispatch()
-    const {isLoading, isError} = useSelector(state => state.counter)
+    const {isLoading, isError} = useSelector(state => state.counter.transactions)
 
     const handleCreate = (e) => {
         e.preventDefault();

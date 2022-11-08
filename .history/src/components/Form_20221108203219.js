@@ -1,45 +1,29 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { createTransaction } from '../features/moneyTransApi/transSlice'
 
 export default function Form() {
-    const [detail, setDetail] = useState('')
+    const [income, setIncome] = useState('')
     const [type, setType] = useState('')
     const [expense, setExpense] = useState('')
 
-    const dispatch = useDispatch()
-    const {isLoading, isError} = useSelector(state => state.counter)
 
-    const handleCreate = (e) => {
+    const handleFormSubmit = (e) => {
         e.preventDefault();
-        dispatch(createTransaction({
-            name: detail,
-            type,
-            amount: Number(expense)
-        }))
-
-        //making empty our input fields
-        setDetail('')
-        setType('')
-        setExpense('')
-    }
+    } 
 
 
     return (
         <div className="form">
             <h3>Add new transaction</h3>
 
-            <form onSubmit={handleCreate}>
+            <form onSubmit={handleFormSubmit}>
 
                 <div className="form-group">
                     <label>Name</label>
                     <input
                         type="text"
-                        name="name"
-                        placeholder="Enter Transaction Name"
-                        onChange={e => setDetail(e.target.value)}
-                        value={detail}
-                        required
+                        name="earning"
+                        placeholder="Enter Amount Of Income"
+                        onChange={e => setIncome(e.target.value)}
                     />
                 </div>
 
@@ -50,9 +34,8 @@ export default function Form() {
                             type="radio"
                             value="income"
                             name="type"
-                            checked={type === 'income'}
-                            onChange={(e) => setType('income')}
-                            required
+                            checked
+                            onChange={e => setType(e.target.value)}
                         />
                         <label>Income</label>
                     </div>
@@ -62,8 +45,7 @@ export default function Form() {
                             value="expense"
                             name="type"
                             placeholder="Expense"
-                            onChange={e => setType('expense')}
-                            required
+                            onChange={e => setType(e.target.value)}
                         />
                         <label>Expense</label>
                     </div>
@@ -76,13 +58,9 @@ export default function Form() {
                         placeholder="Enter Amount Of Expense"
                         name="expense"
                         onChange={e => setExpense(e.target.value)}
-                        value={expense}
                     />
                 </div>
-                {
-                    !isLoading && isError && <small  className='erorr'>There was an error occured</small>
-                }
-                <button disabled={isLoading} type="submit" className="btn">Add Transaction</button>
+                <button type="submit" className="btn">Add Transaction</button>
             </form>
 
 

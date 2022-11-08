@@ -8,7 +8,8 @@ export default function Form() {
     const [expense, setExpense] = useState('')
 
     const dispatch = useDispatch()
-    const {isLoading, isError} = useSelector(state => state.counter)
+    const transaction = useSelector(state => state.counter.transactions)
+    console.log(transaction);
 
     const handleCreate = (e) => {
         e.preventDefault();
@@ -79,10 +80,7 @@ export default function Form() {
                         value={expense}
                     />
                 </div>
-                {
-                    !isLoading && isError && <small  className='erorr'>There was an error occured</small>
-                }
-                <button disabled={isLoading} type="submit" className="btn">Add Transaction</button>
+                <button type="submit" className="btn">Add Transaction</button>
             </form>
 
 

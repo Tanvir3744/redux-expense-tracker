@@ -5,7 +5,7 @@ const AloneTransaction = (props) => {
     const {name, type, amount} = props.transaction;
     console.log(props.transaction)
     return (
-        <li className={`transaction ${type}`}>
+        <li className="transaction income">
             <p>{name}</p>
             <div className="right">
                 <p>{amount}</p>

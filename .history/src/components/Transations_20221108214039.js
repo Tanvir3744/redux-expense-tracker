@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchTransactions } from '../features/moneyTransApi/transSlice'
+import { getTransactions } from '../features/moneyTransApi/transApi'
 import AloneTransaction from './AloneTransaction'
 export default function Transations() {
     const { isLoading, isError, error, transactions } = useSelector(state => state.counter)
@@ -8,8 +8,8 @@ export default function Transations() {
     const dispatch = useDispatch()
     
     useEffect(() => {
-        dispatch(fetchTransactions())
-    },[dispatch])
+        dispatch(getTransactions())
+    },[])
 
     // decide what to render
     let content; 

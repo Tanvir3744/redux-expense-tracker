@@ -1,16 +1,9 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchTransactions } from '../features/moneyTransApi/transSlice'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import AloneTransaction from './AloneTransaction'
 export default function Transations() {
     const { isLoading, isError, error, transactions } = useSelector(state => state.counter)
     
-    const dispatch = useDispatch()
-    
-    useEffect(() => {
-        dispatch(fetchTransactions())
-    },[dispatch])
-
     // decide what to render
     let content; 
     if (isLoading && !isError) {
@@ -25,7 +18,9 @@ export default function Transations() {
         content = <small className="error">No transactions found in queue</small>
     }
 
-
+    if (!isLoading && !isError && transactions) {
+        content = transactions.map(transaction => <AloneTransaction key={transaction.id} transaction={transaction} />)
+    }
 
     return (
         <>
@@ -34,10 +29,8 @@ export default function Transations() {
             <div className="conatiner_of_list_of_transactions">
                 <ul>
                     {/* here wil be the single transactions component */}
-                    { !isLoading && !isError &&
-                        transactions.map(transaction => <AloneTransaction key={transaction.id} transaction={transaction}  /> )
-                    }
-                    
+                    {/*  <AloneTransaction />  */}
+                    {content}
                 </ul>
             </div>
         </>

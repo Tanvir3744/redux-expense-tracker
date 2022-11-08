@@ -8,14 +8,14 @@ export default function Form() {
     const [expense, setExpense] = useState('')
 
     const dispatch = useDispatch()
-    const {isLoading, isError} = useSelector(state => state.counter)
+    const transaction = useSelector(state => state.transactions)
 
     const handleCreate = (e) => {
         e.preventDefault();
         dispatch(createTransaction({
-            name: detail,
+            earning: detail,
             type,
-            amount: Number(expense)
+            expense: Number(expense)
         }))
 
         //making empty our input fields
@@ -35,7 +35,7 @@ export default function Form() {
                     <label>Name</label>
                     <input
                         type="text"
-                        name="name"
+                        name="earning"
                         placeholder="Enter Transaction Name"
                         onChange={e => setDetail(e.target.value)}
                         value={detail}
@@ -79,10 +79,7 @@ export default function Form() {
                         value={expense}
                     />
                 </div>
-                {
-                    !isLoading && isError && <small  className='erorr'>There was an error occured</small>
-                }
-                <button disabled={isLoading} type="submit" className="btn">Add Transaction</button>
+                <button type="submit" className="btn">Add Transaction</button>
             </form>
 
 
