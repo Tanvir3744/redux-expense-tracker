@@ -1,51 +1,28 @@
-import React, { useEffect,  useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { createTransaction } from '../features/moneyTransApi/transSlice'
 
 export default function Form() {
     const [detail, setDetail] = useState('')
-    const [transType, setType] = useState('')
+    const [type, setType] = useState('')
     const [expense, setExpense] = useState('')
     const [edit, setEdit] = useState(false)
 
     const dispatch = useDispatch()
-    const { isLoading, isError } = useSelector(state => state.counter)
-    
-    const {editing} = useSelector(state => state.counter) || {};
-    //whenever we want to re-render somthing to our ui (update) we have to use useEffect for updating these things
-    useEffect(() => {
-        const { id, name, amount, type} =  editing|| {};
-        if (id) {
-            setEdit(true)
-            setDetail(name)
-            setType(type)
-            setExpense(amount)
-        } else {
-            setEdit(false)
-            handleResetForm();
-        }
-    }, [editing, detail, expense, transType])
-
-    const handleResetForm = () => {
-        //making empty our input fields
-        setDetail('')
-        setType('')
-        setExpense('')
-    }
+    const {isLoading, isError} = useSelector(state => state.counter)
 
     const handleCreate = (e) => {
         e.preventDefault();
         dispatch(createTransaction({
             name: detail,
-            type: transType,
+            type,
             amount: Number(expense)
         }))
 
-        handleResetForm();
-    }
-
-    const cancelEditMode = () => {
-        setEdit(false)
+        //making empty our input fields
+        setDetail('')
+        setType('')
+        setExpense('')
     }
 
 
@@ -74,7 +51,7 @@ export default function Form() {
                             type="radio"
                             value="income"
                             name="type"
-                            checked={transType === 'income'}
+                            checked={type === 'income'}
                             onChange={(e) => setType('income')}
                             required
                         />
@@ -110,9 +87,7 @@ export default function Form() {
             </form>
 
 
-            {
-                edit && <button className="btn cancel_edit" onClick={cancelEditMode}>Cancel Edit</button>
-            }
+            <button className="btn cancel_edit">Cancel Edit</button>
         </div>
     )
 }

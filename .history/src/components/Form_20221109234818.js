@@ -1,30 +1,26 @@
-import React, { useEffect,  useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { createTransaction } from '../features/moneyTransApi/transSlice'
 
 export default function Form() {
     const [detail, setDetail] = useState('')
-    const [transType, setType] = useState('')
+    const [type, setType] = useState('')
     const [expense, setExpense] = useState('')
     const [edit, setEdit] = useState(false)
 
     const dispatch = useDispatch()
     const { isLoading, isError } = useSelector(state => state.counter)
     
-    const {editing} = useSelector(state => state.counter) || {};
+    const editMode = useSelector(state => state.counter.editing) || {};
     //whenever we want to re-render somthing to our ui (update) we have to use useEffect for updating these things
     useEffect(() => {
-        const { id, name, amount, type} =  editing|| {};
+        const { id } = editMode;
         if (id) {
-            setEdit(true)
-            setDetail(name)
-            setType(type)
-            setExpense(amount)
+            edit(true)
         } else {
-            setEdit(false)
             handleResetForm();
         }
-    }, [editing, detail, expense, transType])
+    }, [edit, editMode])
 
     const handleResetForm = () => {
         //making empty our input fields
@@ -37,7 +33,7 @@ export default function Form() {
         e.preventDefault();
         dispatch(createTransaction({
             name: detail,
-            type: transType,
+            type,
             amount: Number(expense)
         }))
 
@@ -46,6 +42,7 @@ export default function Form() {
 
     const cancelEditMode = () => {
         setEdit(false)
+        handleResetForm();
     }
 
 
@@ -74,7 +71,7 @@ export default function Form() {
                             type="radio"
                             value="income"
                             name="type"
-                            checked={transType === 'income'}
+                            checked={type === 'income'}
                             onChange={(e) => setType('income')}
                             required
                         />

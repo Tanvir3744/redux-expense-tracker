@@ -46,6 +46,7 @@ export default function Form() {
 
     const cancelEditMode = () => {
         setEdit(false)
+        handleResetForm();
     }
 
 

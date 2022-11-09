@@ -46,6 +46,7 @@ export default function Form() {
 
     const cancelEditMode = () => {
         setEdit(false)
+        handleResetForm();
     }
 
 
@@ -111,7 +112,7 @@ export default function Form() {
 
 
             {
-                edit && <button className="btn cancel_edit" onClick={cancelEditMode}>Cancel Edit</button>
+                !edit && <button className="btn cancel_edit" onClick={cancelEditMode}>Cancel Edit</button>
             }
         </div>
     )

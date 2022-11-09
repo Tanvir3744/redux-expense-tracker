@@ -4,7 +4,7 @@ import { createTransaction } from '../features/moneyTransApi/transSlice'
 
 export default function Form() {
     const [detail, setDetail] = useState('')
-    const [transType, setType] = useState('')
+    const [type, setType] = useState('')
     const [expense, setExpense] = useState('')
     const [edit, setEdit] = useState(false)
 
@@ -24,7 +24,7 @@ export default function Form() {
             setEdit(false)
             handleResetForm();
         }
-    }, [editing, detail, expense, transType])
+    }, [editing, detail, expense, type])
 
     const handleResetForm = () => {
         //making empty our input fields
@@ -37,7 +37,7 @@ export default function Form() {
         e.preventDefault();
         dispatch(createTransaction({
             name: detail,
-            type: transType,
+            type,
             amount: Number(expense)
         }))
 
@@ -46,6 +46,7 @@ export default function Form() {
 
     const cancelEditMode = () => {
         setEdit(false)
+        handleResetForm();
     }
 
 
@@ -74,7 +75,7 @@ export default function Form() {
                             type="radio"
                             value="income"
                             name="type"
-                            checked={transType === 'income'}
+                            checked={type === 'income'}
                             onChange={(e) => setType('income')}
                             required
                         />

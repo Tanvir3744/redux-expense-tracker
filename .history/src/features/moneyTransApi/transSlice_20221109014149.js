@@ -112,4 +112,3 @@ const transactionSlice = createSlice({
 })
 
 export default transactionSlice.reducer;
-export const { editActive, editInActive} = transactionSlice.actions;

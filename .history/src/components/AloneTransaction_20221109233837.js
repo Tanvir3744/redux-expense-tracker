@@ -1,11 +1,13 @@
 import React from 'react';
 import EditImage from '../Assests/images/edit.svg';
 import DeleteImage from '../Assests/images/delete.svg'
+import { useDispatch, useSelector } from 'react-redux';
 import { editActive } from '../features/moneyTransApi/transSlice';
-import { useDispatch } from 'react-redux';
 const AloneTransaction = (props) => {
     const { name, type, amount } = props.transaction;
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const {} = useSelector(state => state.counter?.editing)
+
     const handleEdit = () => {
         dispatch(editActive(props.transaction))
     }

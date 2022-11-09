@@ -6,6 +6,7 @@ export default function Transations() {
     const { isLoading, isError, error, transactions } = useSelector(state => state.counter)
     
     const dispatch = useDispatch()
+    
     useEffect(() => {
         dispatch(fetchTransactions())
     },[dispatch])
@@ -20,9 +21,11 @@ export default function Transations() {
         content = <small className='error'>{error?.message}</small>
     }
 
-    if (!isLoading && !isError && transactions.length === 0) {
+    if (!isLoading && !isError && transactions.length < 0) {
         content = <small className="error">No transactions found in queue</small>
     }
+
+
 
     return (
         <>
