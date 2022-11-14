@@ -1,0 +1,58 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "name": "Salary from Google",
+      "type": "income",
+      "amount": 1000000
+    },
+    {
+      "id": 2,
+      "name": "Family Expenses",
+      "type": "expense",
+      "amount": 200000
+    },
+    {
+      "name": "have to buy math books",
+      "type": "expense",
+      "amount": 5200,
+      "id": 3
+    },
+    {
+      "name": "rob a bike",
+      "type": "income",
+      "amount": 40000,
+      "id": 4
+    },
+    {
+      "name": "sold a website",
+      "type": "income",
+      "amount": 4000,
+      "id": 5
+    },
+    {
+      "name": "bought a new bike",
+      "type": "expense",
+      "amount": 10000,
+      "id": 6
+    },
+    {
+      "name": "complete a project",
+      "type": "income",
+      "amount": 1000,
+      "id": 7
+    },
+    {
+      "name": "bought new shoes",
+      "type": "expense",
+      "amount": 800,
+      "id": 8
+    },
+    {
+      "name": "build a home",
+      "type": "expense",
+      "amount": 10000,
+      "id": 9
+    }
+  ]
+}

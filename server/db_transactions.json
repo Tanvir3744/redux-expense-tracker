@@ -1,88 +1,28 @@
 {
   "transactions": [
     {
-      "id": 1,
-      "name": "Salary from Google",
+      "name": "sold a new website to a american client",
       "type": "income",
-      "amount": 1000000
-    },
-    {
-      "id": 2,
-      "name": "Family Expenses",
-      "type": "expense",
-      "amount": 200000
+      "amount": 10000,
+      "id": 1
     },
     {
       "name": "have to buy math books",
       "type": "expense",
-      "amount": 5200,
+      "amount": 498,
+      "id": 2
+    },
+    {
+      "name": "buy a coffe",
+      "type": "expense",
+      "amount": 700,
       "id": 3
     },
     {
-      "name": "rob a bike",
+      "name": "Salary from Google",
       "type": "income",
-      "amount": 40000,
+      "amount": 100,
       "id": 4
-    },
-    {
-      "name": "sold a website",
-      "type": "income",
-      "amount": 4000,
-      "id": 5
-    },
-    {
-      "name": "bought a new bike",
-      "type": "expense",
-      "amount": 10000,
-      "id": 6
-    },
-    {
-      "name": "complete a project",
-      "type": "income",
-      "amount": 1000,
-      "id": 7
-    },
-    {
-      "name": "bought new shoes",
-      "type": "expense",
-      "amount": 800,
-      "id": 8
-    },
-    {
-      "name": "build a home",
-      "type": "expense",
-      "amount": 10000,
-      "id": 9
-    },
-    {
-      "name": "Salary from Google",
-      "type": "income",
-      "amount": 1000000,
-      "id": 10
-    },
-    {
-      "name": "Family Expenses",
-      "type": "expense",
-      "amount": 200000,
-      "id": 11
-    },
-    {
-      "name": "have to buy math books",
-      "type": "expense",
-      "amount": 5200,
-      "id": 12
-    },
-    {
-      "name": "Salary from Google",
-      "type": "income",
-      "amount": 1000000,
-      "id": 13
-    },
-    {
-      "name": "Salary from Google",
-      "type": "income",
-      "amount": 1000000,
-      "id": 14
     }
   ]
 }
