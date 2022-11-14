@@ -20,8 +20,8 @@
     },
     {
       "name": "Salary from Google",
+      "amount": 100000,
       "type": "income",
-      "amount": 100,
       "id": 4
     }
   ]

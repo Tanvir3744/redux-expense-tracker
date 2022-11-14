@@ -1,10 +1,13 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import numberWithCommas from '../thousandSeparator'
+
 export default function Balance() {
     const { transactions } = useSelector(state => state.counter)
     
-    
+    // thousand separator
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
     //calculating the balnce 
     const calBalance = () => {
@@ -24,7 +27,7 @@ export default function Balance() {
             <p>Your Current Balance</p>
             <h3>
                 <span>৳ {' '}</span>
-                <span>{numberWithCommas(calBalance())}</span>
+                <span>{calBalance()}</span>
             </h3>
         </div>
     )
